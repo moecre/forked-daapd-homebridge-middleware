@@ -1,16 +1,17 @@
 {
   "accessories": [
     {
-      "accessory": "HTTP-SPEAKER",
-      "name": "Hallway",
-      "mute": {
-        "onUrl": "http://localhost:3000/outputs/Hallway/state/on",
-        "offUrl": "http://localhost:3000/outputs/Hallway/state/off",
-        "statusUrl": "http://localhost:3000/outputs/Hallway"
+      "accessory": "HTTP-RGB",
+      "name": "Hallway Speaker",
+      "service": "Light",
+      "switch": {
+        "status": "http://localhost:3000/outputs/Hallway",
+        "powerOn": "http://localhost:3000/outputs/Hallway/state/on",
+        "powerOff": "http://localhost:3000/outputs/Hallway/state/off"
       },
-      "volume": {
-        "statusUrl": "http://localhost:3000/outputs/Hallway/volume",
-        "setUrl": "http://localhost:3000/outputs/Hallway/volume/%s"
+      "brightness": {
+        "status": "http://localhost:3000/outputs/Hallway/volume",
+        "url": "http://localhost:3000/outputs/Hallway/volume/%s"
       }
     }
   ]
