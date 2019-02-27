@@ -2,6 +2,12 @@
   "name": "forked-daapd-homebridge-middleware",
   "description": "A middleware for provisioning common use cases of forked-daapd's HTTP API to homebridge",
   "keywords": [
+    "music",
+    "radio",
+    "AirPlay",
+    "speaker",
+    "multiroom",
+    "audio",
     "api",
     "middleware",
     "forked-daapd",
@@ -14,7 +20,6 @@
     "dev-server": "nodemon ./bin/www"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "es6-promise": "^4.2.6",
     "express": "~4.16.0",
@@ -25,5 +30,10 @@
   "devDependencies": {
     "nodemon": "^1.18.10"
   },
-  "author": "Patrick Pittich-Rinnerthaler <patrick@pittich-rinnerthaler.de>"
+  "author": "Patrick Pittich-Rinnerthaler <patrick@pittich-rinnerthaler.de> (https://www.pittich-rinnerthaler.de)",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moecre/forked-daapd-homebridge-middleware.git"
+  }
 }

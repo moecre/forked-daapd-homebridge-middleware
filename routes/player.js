@@ -4,10 +4,10 @@ const config = require('../config')
 const Player = new (require('../jsonAPI/Player'))(config.baseUrl)
 
 /**
- * Route to get player status (only there to have something on /)
+ * Route to stop playback
  */
-router.get('/', async (req, res) => {
-  Player.status()
+router.get('/stop', (req, res) => {
+  Player.stop()
     .then(async response => {
       res.status(response.status).send(await response.json())
     })

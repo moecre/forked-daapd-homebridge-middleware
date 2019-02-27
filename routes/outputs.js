@@ -2,8 +2,15 @@ const _ = require('lodash')
 const express = require('express')
 const router = express.Router()
 const config = require('../config')
-const Outputs = new (require('../jsonAPI/Outputs'))(config.baseUrl, config.defaultVolume)
+const Outputs = new (require('../jsonAPI/Outputs'))(config.baseUrl)
 
+/**
+ * Gets output device by name
+ *
+ * @param {String} name
+ * @return {Promise<any>}
+ * @private
+ */
 const _getOutputByName = name => {
   return Outputs.list()
     .then(response => {
@@ -27,10 +34,13 @@ router.get('/:name', (req, res) => {
   _getOutputByName(outputName)
     .then(outputByName => {
       if (_.isEmpty(outputByName)) {
-        // @todo Let's see what homebridge does with that status and response
-        return res.status(204).send('No Content')
+        return Promise.reject(new Error('Output device not found'))
       }
       res.send(outputByName.selected ? '1' : '0')
+    })
+    .catch(err => {
+      console.error(err)
+      res.send('0')
     })
 })
 
@@ -44,8 +54,7 @@ router.get('/:name/state/:state', (req, res) => {
   _getOutputByName(outputName)
     .then(outputByName => {
       if (_.isEmpty(outputByName)) {
-        // @todo Let's see what homebridge does with that status and response
-        return res.status(204).send('No Content')
+        return Promise.reject(new Error('Output device not found'))
       }
       return Outputs.output(outputByName.id, { selected: state })
         .then(response => {
@@ -55,8 +64,7 @@ router.get('/:name/state/:state', (req, res) => {
           return _getOutputByName(outputName)
             .then(refreshedOutputByName => {
               if (_.isEmpty(outputByName)) {
-                // @todo Let's see what homebridge does with that status and response
-                return res.status(204).send('No Content')
+                return Promise.reject(new Error('Output device not found'))
               }
               return refreshedOutputByName
             })
@@ -80,10 +88,13 @@ router.get('/:name/volume', (req, res) => {
   _getOutputByName(outputName)
     .then(outputByName => {
       if (_.isEmpty(outputByName)) {
-        // @todo Let's see what homebridge does with that status and response
-        return res.status(204).send('No Content')
+        return Promise.reject(new Error('Output device not found'))
       }
       res.send(String(outputByName.volume))
+    })
+    .catch(err => {
+      console.error(err)
+      res.send('0')
     })
 })
 
@@ -101,8 +112,7 @@ router.get('/:name/volume/:volume', (req, res) => {
   _getOutputByName(outputName)
     .then(outputByName => {
       if (_.isEmpty(outputByName)) {
-        // @todo Let's see what homebridge does with that status and response
-        return res.status(204).send('No Content')
+        return Promise.reject(new Error('Output device not found'))
       }
       return Outputs.output(outputByName.id, { volume })
         .then(response => {
@@ -112,8 +122,7 @@ router.get('/:name/volume/:volume', (req, res) => {
           return _getOutputByName(outputName)
             .then(refreshedOutputByName => {
               if (_.isEmpty(outputByName)) {
-                // @todo Let's see what homebridge does with that status and response
-                return res.status(204).send('No Content')
+                return Promise.reject(new Error('Output device not found'))
               }
               return refreshedOutputByName
             })

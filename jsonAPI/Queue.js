@@ -6,17 +6,25 @@ module.exports = class Queue {
     this.baseUrl = baseUrl + 'queue'
   }
 
+  /**
+   * List current playback queue
+   *
+   * @return {Promise<Response>}
+   */
   list () {
     return fetch(this.baseUrl)
   }
 
-  clear () {
-    return fetch(this.baseUrl + '/clear', {
-      method: 'PUT'
-    })
-  }
-
-  add (uris, playback = false, playbackFromPosition = 1, clear = false) {
+  /**
+   * Adds items to the current playback queue
+   *
+   * @param {String} uris
+   * @param {String=} playback
+   * @param {Number=} playbackFromPosition
+   * @param {Boolean=} clear
+   * @return {Promise<Response>}
+   */
+  add (uris, playback = '', playbackFromPosition = 0, clear = false) {
     let URL = new url('/api/queue/items/add', this.baseUrl)
     URL.searchParams.set('uris', uris)
     URL.searchParams.set('playback', String(playback))

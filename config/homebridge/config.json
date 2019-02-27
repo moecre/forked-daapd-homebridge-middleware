@@ -2,6 +2,16 @@
   "accessories": [
     {
       "accessory": "HTTP-RGB",
+      "name": "ROCK ANTENNE",
+      "service": "Light",
+      "switch": {
+        "status": "http://localhost:3000/playlists/ROCK%20ANTENNE",
+        "powerOn": "http://localhost:3000/playlists/ROCK%20ANTENNE/play",
+        "powerOff": "http://localhost:3000/player/stop"
+      }
+    },
+    {
+      "accessory": "HTTP-RGB",
       "name": "Hallway Speaker",
       "service": "Light",
       "switch": {
