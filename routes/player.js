@@ -8,8 +8,8 @@ const Player = new (require('../jsonAPI/Player'))(config.baseUrl)
  */
 router.get('/stop', (req, res) => {
   Player.stop()
-    .then(async response => {
-      res.status(response.status).send(await response.json())
+    .then(response => {
+      res.status(response.status)
     })
     .catch(err => {
       console.error(err)

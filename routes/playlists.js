@@ -44,7 +44,7 @@ router.get('/:name', (req, res) => {
     .then(playerStatus => {
       if (playerStatus.state === 'stop') {
         // No playback at all
-        return Promise.reject(new Error('There is no playback at all'))
+        return Promise.reject(new Error())
       }
       return playerStatus['item_id']
     })
@@ -86,7 +86,9 @@ router.get('/:name', (req, res) => {
       res.send(_.isObject(foundTrack) ? '1' : '0')
     })
     .catch(err => {
-      console.error(err)
+      if (err) {
+        console.error(err)
+      }
       res.send('0')
     })
 })

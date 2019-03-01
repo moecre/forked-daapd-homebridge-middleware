@@ -12,7 +12,7 @@
     },
     {
       "accessory": "HTTP-RGB",
-      "name": "Hallway Speaker",
+      "name": "Hallway speaker",
       "service": "Light",
       "switch": {
         "status": "http://localhost:3000/outputs/Hallway",
