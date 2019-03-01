@@ -47,7 +47,7 @@ $ npm install --save forked-daapd-homebridge-middleware
 For the `npm init` command answer all questions with [ENTER] key.
 
 ### Configuration
-See [configuration](#configuration).
+See [configuration](#configuration-2).
 
 ### Run as npm dependency
 
@@ -65,7 +65,7 @@ $ npm install
 ```
 
 ### Configuration
-See [configuration](#configuration).
+See [configuration](#configuration-2).
 
 ### Run as separate project
 
