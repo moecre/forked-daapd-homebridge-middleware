@@ -12,6 +12,7 @@ Examples:
 * "Hey Siri, start [YOUR_FAVOURITE_RADIO_STATION]"
 * "Hey Siri, turn on Speaker in Hallway"
 * "Hey Siri, turn off [SPEAKER_NAME] in [ROOM_NAME]"
+* You can use the brightness setting to control the output volume: "Hey Siri, set brightness of [SPEAKER_NAME] in [ROOM_NAME] to 70%"
 
 ![Hallway](docs/Home.app-Hallway.PNG)
 ![Kitchen](docs/Home.app-Kitchen.PNG)
@@ -82,7 +83,7 @@ In case anything unexpected happens the middleware is going to be restarted auto
 
 By the way, that's a good solution for your Homebridge process, too.
 
-# <a name="configuration"></a>Configuration
+# Configuration
 
 ## Create forked-daapd-homebridge-middleware configuration file
 
