@@ -86,7 +86,7 @@ router.get('/:name', (req, res) => {
       res.send(_.isObject(foundTrack) ? '1' : '0')
     })
     .catch(err => {
-      if (err) {
+      if (!_.isEmpty(err.message)) {
         console.error(err)
       }
       res.send('0')
