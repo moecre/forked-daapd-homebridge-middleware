@@ -18,9 +18,13 @@ module.exports = createLogger({
     outputFormat
   ),
   transports: [
-    new transports.Console()
+    new transports.Console({
+      stderrLevels: ['error']
+    })
   ],
   exceptionHandlers: [
-    new transports.Console()
+    new transports.Console({
+      stderrLevels: ['error']
+    })
   ]
 })
