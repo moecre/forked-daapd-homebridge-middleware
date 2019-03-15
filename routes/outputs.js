@@ -1,8 +1,9 @@
 const _ = require('lodash')
 const express = require('express')
-const router = express.Router()
+const logger = require('../libs/logger')
 const config = require('../config')
 const Outputs = new (require('../jsonAPI/Outputs'))(config.baseUrl)
+const router = express.Router()
 
 /**
  * Gets output device by name
@@ -39,7 +40,7 @@ router.get('/:name', (req, res) => {
       res.send(outputByName.selected ? '1' : '0')
     })
     .catch(err => {
-      console.error(err)
+      logger.error(err)
       res.send('0')
     })
 })
@@ -74,7 +75,7 @@ router.get('/:name/state/:state', (req, res) => {
       res.send(refreshedOutputByName)
     })
     .catch(err => {
-      console.error(err)
+      logger.error(err)
       res.status(500).send('Internal Server Error')
     })
 })
@@ -93,7 +94,7 @@ router.get('/:name/volume', (req, res) => {
       res.send(String(outputByName.volume))
     })
     .catch(err => {
-      console.error(err)
+      logger.error(err)
       res.send('0')
     })
 })
@@ -132,7 +133,7 @@ router.get('/:name/volume/:volume', (req, res) => {
       res.send(refreshedOutputByName)
     })
     .catch(err => {
-      console.error(err)
+      logger.error(err)
       res.status(500).send('Internal Server Error')
     })
 })

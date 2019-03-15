@@ -1,10 +1,11 @@
 const _ = require('lodash')
 const express = require('express')
-const router = express.Router()
+const logger = require('../libs/logger')
 const config = require('../config')
 const Queue = new (require('../jsonAPI/Queue'))(config.baseUrl)
 const Library = new (require('../jsonAPI/Library'))(config.baseUrl)
 const Player = new (require('../jsonAPI/Player'))(config.baseUrl)
+const router = express.Router()
 
 /**
  * Gets playlist by name
@@ -87,7 +88,7 @@ router.get('/:name', (req, res) => {
     })
     .catch(err => {
       if (!_.isEmpty(err.message)) {
-        console.error(err)
+        logger.error(err)
       }
       res.send('0')
     })
@@ -116,7 +117,7 @@ router.get('/:name/play', (req, res) => {
       res.send(response)
     })
     .catch(err => {
-      console.error(err)
+      logger.error(err)
       res.status(500).send('Internal Server Error')
     })
 })

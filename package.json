@@ -15,10 +15,10 @@
     "plugin",
     "playlist"
   ],
-  "version": "1.1.1",
+  "version": "1.1.2",
   "scripts": {
     "start": "node ./bin/www",
-    "dev-server": "nodemon ./bin/www"
+    "dev-server": "DEBUG=* nodemon ./bin/www"
   },
   "bin": {
     "forked-daapd-homebridge-middleware": "./bin/www"
@@ -29,7 +29,8 @@
     "express": "~4.16.0",
     "isomorphic-fetch": "^2.2.1",
     "lodash": "^4.17.11",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.10"

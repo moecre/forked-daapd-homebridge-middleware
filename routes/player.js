@@ -1,7 +1,8 @@
 const express = require('express')
-const router = express.Router()
+const logger = require('../libs/logger')
 const config = require('../config')
 const Player = new (require('../jsonAPI/Player'))(config.baseUrl)
+const router = express.Router()
 
 /**
  * Route to stop playback
@@ -12,7 +13,7 @@ router.get('/stop', (req, res) => {
       res.status(response.status)
     })
     .catch(err => {
-      console.error(err)
+      logger.error(err)
       res.status(500).send('Internal Server Error')
     })
 })
