@@ -35,7 +35,7 @@ router.get('/:name', (req, res) => {
   _getOutputByName(outputName)
     .then(outputByName => {
       if (_.isEmpty(outputByName)) {
-        return Promise.reject(new Error('Output device not found'))
+        return Promise.reject(new Error(`Output device "${outputName}" not found`))
       }
       res.send(outputByName.selected ? '1' : '0')
     })
@@ -55,7 +55,7 @@ router.get('/:name/state/:state', (req, res) => {
   _getOutputByName(outputName)
     .then(outputByName => {
       if (_.isEmpty(outputByName)) {
-        return Promise.reject(new Error('Output device not found'))
+        return Promise.reject(new Error(`Output device "${outputName}" not found`))
       }
       return Outputs.output(outputByName.id, { selected: state })
         .then(response => {
@@ -65,7 +65,7 @@ router.get('/:name/state/:state', (req, res) => {
           return _getOutputByName(outputName)
             .then(refreshedOutputByName => {
               if (_.isEmpty(outputByName)) {
-                return Promise.reject(new Error('Output device not found'))
+                return Promise.reject(new Error(`Output device "${outputName}" not found`))
               }
               return refreshedOutputByName
             })
@@ -89,7 +89,7 @@ router.get('/:name/volume', (req, res) => {
   _getOutputByName(outputName)
     .then(outputByName => {
       if (_.isEmpty(outputByName)) {
-        return Promise.reject(new Error('Output device not found'))
+        return Promise.reject(new Error(`Output device "${outputName}" not found`))
       }
       res.send(String(outputByName.volume))
     })
@@ -113,7 +113,7 @@ router.get('/:name/volume/:volume', (req, res) => {
   _getOutputByName(outputName)
     .then(outputByName => {
       if (_.isEmpty(outputByName)) {
-        return Promise.reject(new Error('Output device not found'))
+        return Promise.reject(new Error(`Output device "${outputName}" not found`))
       }
       return Outputs.output(outputByName.id, { volume })
         .then(response => {
@@ -123,7 +123,7 @@ router.get('/:name/volume/:volume', (req, res) => {
           return _getOutputByName(outputName)
             .then(refreshedOutputByName => {
               if (_.isEmpty(outputByName)) {
-                return Promise.reject(new Error('Output device not found'))
+                return Promise.reject(new Error(`Output device "${outputName}" not found`))
               }
               return refreshedOutputByName
             })
