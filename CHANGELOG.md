@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.2.4] - 2019-03-25
+### Fixed
+- Socket hang up on `/player/stop` because of missing `send()`
+
 ## [1.2.3] - 2019-03-25
 ### Added
 - Changelog
@@ -38,7 +42,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - This is v1.0 which contains all of my current use cases so far.
 
-[Unreleased]: https://github.com/moecre/forked-daapd-homebridge-middleware/compare/1.2.3...HEAD
+[Unreleased]: https://github.com/moecre/forked-daapd-homebridge-middleware/compare/1.2.4...HEAD
+[1.2.4]: https://github.com/moecre/forked-daapd-homebridge-middleware/compare/1.2.3...1.2.4
 [1.2.3]: https://github.com/moecre/forked-daapd-homebridge-middleware/compare/1.1.3...1.2.3
 [1.1.3]: https://github.com/moecre/forked-daapd-homebridge-middleware/compare/1.1.2...1.1.3
 [1.1.2]: https://github.com/moecre/forked-daapd-homebridge-middleware/compare/1.1.1...1.1.2

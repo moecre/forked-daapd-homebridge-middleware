@@ -10,7 +10,7 @@ const router = express.Router()
 router.get('/stop', (req, res) => {
   Player.stop()
     .then(response => {
-      res.status(response.status)
+      res.status(response.status).send(response.statusText)
     })
     .catch(err => {
       logger.error(err)
