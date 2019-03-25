@@ -111,11 +111,12 @@ be unique over all your accessories (UUID in Homebridge).
   "service": "Light",
   "switch": {
     "status": "http://{HOSTNAME ON WHICH FORKED-DAAPD-HOMEBRIDGE-MIDDLEWARE IS RUNNING}:3000/playlists/{URL ENCODED NAME OF THE PLAYLIST IN FORKED-DAAPD}",
-    "powerOn": "http://{HOSTNAME ON WHICH FORKED-DAAPD-HOMEBRIDGE-MIDDLEWARE IS RUNNING}:3000/playlists/{URL ENCODED NAME OF THE PLAYLIST IN FORKED-DAAPD}/play",
+    "powerOn": "http://{HOSTNAME ON WHICH FORKED-DAAPD-HOMEBRIDGE-MIDDLEWARE IS RUNNING}:3000/playlists/{URL ENCODED NAME OF THE PLAYLIST IN FORKED-DAAPD}/play[?shuffle=true]",
     "powerOff": "http://{HOSTNAME ON WHICH FORKED-DAAPD-HOMEBRIDGE-MIDDLEWARE IS RUNNING}:3000/player/stop"
   }
 }
 ```
+The `/playlists/:playlist/play` endpoint has an optional parameter `shuffle`. If applied all the playlist items get added to the queue shuffled.
 
 ### Speaker (output device)
 

@@ -99,13 +99,14 @@ router.get('/:name', (req, res) => {
  */
 router.get('/:name/play', (req, res) => {
   const playlistName = req.params.name
+  const shuffle = !!req.query.shuffle
 
   _getPlaylistByName(playlistName)
     .then(playlistByName => {
       if (_.isEmpty(playlistByName)) {
         return Promise.reject(new Error('Playlist not found'))
       }
-      return Queue.add(`library:playlist:${playlistByName.id}`, 'start', 0, true)
+      return Queue.add(`library:playlist:${playlistByName.id}`, 'start', 0, true, shuffle)
         .then(async response => {
           if (!(response.status >= 200 && response.status < 300)) {
             return Promise.reject(new Error(response.statusText))
